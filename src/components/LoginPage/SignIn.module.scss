@@ -1,0 +1,47 @@
+.sign {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #112d59;
+  align-items: center;
+}
+
+.blockSignIn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 10px solid #071f42;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.formSignIn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.buttonSignIn{
+  margin-top: 10px;
+  background: #112d59;
+  color: white;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.buttonSignInGoogle{
+  border: none;
+  background: #112d59;
+  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+.imgGoogle{
+  width: 50px;
+}

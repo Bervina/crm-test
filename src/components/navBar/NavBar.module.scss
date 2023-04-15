@@ -1,0 +1,10 @@
+.NavBar {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-top:1px solid lightgray ;
+  border-bottom: 1px solid lightgray;
+}
