@@ -15,17 +15,19 @@ const Travel = () => {
   const [to, setTo] = useState();
   const [numberSeats, setNumberSeats] = useState();
   const [date, setDate] = useState();
-  const trips = [];
-  const tripsKey = [];
-
-  const map = data.trips;
-  for (let key in map) {
-    trips.push(map[key]);
-    tripsKey.push(key);
-  }
+  const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    onValue(ref(db,), snapshot => {
+    const map = data.trips;
+    const tripArray = [];
+    for (let key in map) {
+      tripArray.push(map[key]);
+    }
+    setTrips(tripArray);
+  }, [data]);
+
+  useEffect(() => {
+    onValue(ref(db), (snapshot) => {
       const data = snapshot.val();
       setData(data);
     });
@@ -46,9 +48,7 @@ const Travel = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-
     } else {
-
       event.preventDefault();
       writeDatabase();
     }
@@ -56,22 +56,31 @@ const Travel = () => {
   };
 
   const tripsList = useMemo(() => {
-    return trips.map((event, index) => <div key={index} className={style.tripsList}>
-      <div>
-        <p>From-{event.from} : To-{event.to}</p>
-        <p>{event.date}</p>
-        <p>Number of seats ={event.numberSeats}</p>
+    return trips.map((event, index) => (
+      <div key={index} className={style.tripsList}>
+        <div>
+          <p>
+            From-{event.from} : To-{event.to}
+          </p>
+          <p>{event.date}</p>
+          <p>Number of seats ={event.numberSeats}</p>
+        </div>
       </div>
-    </div>);
+    ));
   }, [trips]);
 
   return (
-    <Form className={style.travel} noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form
+      className={style.travel}
+      noValidate
+      validated={validated}
+      onSubmit={handleSubmit}
+    >
       <Row className={style.row}>
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label className={style.label}>From</Form.Label>
           <Form.Control
-            onChange={event => setFrom(event.target.value)}
+            onChange={(event) => setFrom(event.target.value)}
             required
             type="text"
             placeholder="From"
@@ -81,7 +90,7 @@ const Travel = () => {
         <Form.Group as={Col} md="4" controlId="validationCustom02">
           <Form.Label className={style.label}>To</Form.Label>
           <Form.Control
-            onChange={event => setTo(event.target.value)}
+            onChange={(event) => setTo(event.target.value)}
             required
             type="text"
             placeholder="To"
@@ -90,11 +99,10 @@ const Travel = () => {
         </Form.Group>
       </Row>
       <Row className={style.row}>
-
         <Form.Group as={Col} md="3" controlId="validationCustom04">
           <Form.Label className={style.label}>Number of seats</Form.Label>
           <Form.Control
-            onChange={event => setNumberSeats(event.target.value)}
+            onChange={(event) => setNumberSeats(event.target.value)}
             type="number"
             placeholder="Number of seats"
             required
@@ -107,7 +115,8 @@ const Travel = () => {
         <Form.Group as={Col} md="3" controlId="validationCustom05">
           <Form.Label className={style.label}>Date</Form.Label>
           <Form.Control
-            onChange={event => setDate(event.target.value)}
+            min={new Date().toISOString().split('T')[0]}
+            onChange={(event) => setDate(event.target.value)}
             type="date"
             required
           />

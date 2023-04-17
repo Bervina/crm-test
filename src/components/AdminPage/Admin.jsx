@@ -8,11 +8,14 @@ import Form from 'react-bootstrap/Form';
 const AdminPage = () => {
   const uid = auth.currentUser.uid;
   const [data, setData] = useState([]);
-  const users = [];
-
-  for (let key in data) {
-    users.push(data[key]);
-  }
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const usersArray = [];
+    for (let key in data) {
+      usersArray.push(data[key]);
+    }
+    setUsers(usersArray);
+  }, [data]);
 
   useEffect(() => {
     onValue(ref(db), async (snapshot) => {
@@ -52,7 +55,11 @@ const AdminPage = () => {
               <option value="Dispatcher">Dispatcher</option>
             </Form.Select>{' '}
           </Form>
-          <Button type="submit" onClick={() => deleteUser(element?.uid)}>
+          <Button
+            className={style.buttonDel}
+            type="submit"
+            onClick={() => deleteUser(element?.uid)}
+          >
             Delete
           </Button>
         </div>

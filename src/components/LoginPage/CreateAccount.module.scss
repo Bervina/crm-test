@@ -1,10 +1,11 @@
+@import "src/assets/styles/colors";
 .createAccount {
   display: flex;
   justify-content: center;
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #112d59;
+  background: $MAIN_BODY_COLOR;
   align-items: center;
 }
 
@@ -13,27 +14,54 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
-  border: 10px solid #071f42;
+  background: $MAIN_CARD_COLOR;
+  border: 2px solid $MAIN_BORDER_COLOR;
   border-radius: 20px;
   padding: 20px;
+  min-width: 350px;
 }
 
 .formCreateAccount{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  width: 100%;
 }
 
 .buttonCreateAccount{
   margin-top: 10px;
-  background: #112d59;
-  color: white;
-  height: 50px;
-  border-radius: 10px;
+  background: $MAIN_BUTTON_COLOR;
+  color: $MAIN_WHITE_COLOR;
+  height: $MAIN_ELEMENTS_HEIGHT;
+  border: 1px solid $MAIN_BORDER_COLOR;
+  border-radius: $MAIN_BORDER_RADIUS;
 }
 
+.input{
+  height: $MAIN_ELEMENTS_HEIGHT;
+  border-radius: $MAIN_BORDER_RADIUS;
+  &:hover {
+    border-color: $MAIN_HOVER_COLOR;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $MAIN_FOCUS_COLOR;
+    box-shadow: 0 0 5px #ccc;
+  }
+}
+.mainText{
+  color:$MAIN_TITLE_COLOR;
+  font-size: 18px;
+  font-weight: bold;
+}
+.buttonSignInGoogle{
+  border-radius: $MAIN_BORDER_RADIUS;
+  border: 1px solid $MAIN_BORDER_COLOR;
+  background: $MAIN_BODY_COLOR;
+  width: 60px;
+  height: 60px;
+}
 
 
 

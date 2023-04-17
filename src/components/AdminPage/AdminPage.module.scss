@@ -1,15 +1,18 @@
+@import "src/assets/styles/colors";
 .adminBlock{
-  background: #112d59;
-  margin-left: 310px;
-  margin-right: 10px;
-  margin-top: 20px;
+  background: $MAIN_DARK_COLOR;
+  margin: 10px;
   border: 1px solid gray;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: $MAIN_BORDER_RADIUS;
 }
 
 .listUser{
   background: white;
-  border-radius: 20px;
+  border-radius: $MAIN_BORDER_RADIUS;
   margin: 20px;
+}
+
+.buttonDel{
+  margin: 5px;
 }

@@ -1,0 +1,14 @@
+# linting of css to be performed by stylelint
+**/*.scss
+
+**/*.md
+**/*.json
+**/*.png
+**/*.jpeg
+**/*.jpg
+**/*.gif
+**/*.wbmp
+**/*.svg
+
+webpack.config.js
+node_modules

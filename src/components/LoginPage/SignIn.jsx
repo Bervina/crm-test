@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthProvider } from '../../firebase';
-import style from './SignIn.module.scss'
-import imgGoogle from './google.svg'
+import style from './SignIn.module.scss';
+import imgGoogle from './google.svg';
 import { NavLink } from 'react-router-dom';
 
 const SignIn = () => {
@@ -12,18 +12,18 @@ const SignIn = () => {
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
+      .then((userCredential) => {
         console.log(userCredential);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
     setEmail('');
     setPassword('');
   };
 
   const signInPopup = (e) => {
     signInWithPopup(auth, googleAuthProvider)
-      .then(e => console.log(e))
-      .catch(e => console.error(e));
+      .then((e) => console.log(e))
+      .catch((e) => console.error(e));
     console.log(auth);
   };
 
@@ -41,16 +41,29 @@ const SignIn = () => {
         <form onSubmit={signIn} className={style.formSignIn}>
           <h1>SignIn</h1>
           Email:
-          <input type="email" value={email} onChange={handleEmailChange}/>
-
-
+          <input
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            className={style.input}
+          />
           Password:
-          <input type="password" value={password} onChange={handlePasswordChange}/>
-
-          <button className={style.buttonSignIn} type="submit">SignIn</button>
+          <input
+            className={style.input}
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <button className={style.buttonSignIn} type="submit">
+            SignIn
+          </button>
         </form>
-        <NavLink to={'/createAccount'}>Create Account</NavLink>
-        <button className={style.buttonSignInGoogle} onClick={signInPopup}><img className={style.imgGoogle} src={imgGoogle} alt="SignInGoogle"/></button>
+        <NavLink className={style.mainText} to={'/createAccount'}>
+          Create Account
+        </NavLink>
+        <button className={style.buttonSignInGoogle} onClick={signInPopup}>
+          <img className={style.imgGoogle} src={imgGoogle} alt="SignInGoogle" />
+        </button>
       </div>
     </div>
   );
