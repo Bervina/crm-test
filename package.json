@@ -29,7 +29,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix 'src/**/*.{js,jsx}'"
+    "lint": "eslint --fix 'src/**/*.{js,jsx}'",
+    "build": "react-scripts build"
   },
   "browserslist": {
     "production": [
@@ -55,5 +56,9 @@
     "prettier": "^2.8.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Bervina/crm-test.git",
+  "author": "Bervina <olegbervina1995@gmail.com>",
+  "license": "MIT"
 }
